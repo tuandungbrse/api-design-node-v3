@@ -12,4 +12,17 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-export const start = () => {}
+app.get('/data', (req, res) => {
+  res.send({ message: 'hello world!' })
+})
+
+app.post('/data', (req, res) => {
+  console.log(req.body)
+  res.send({ message: 'ok' })
+})
+
+export const start = () => {
+  app.listen(3000, () => {
+    console.log(`server is listenning on port 3000.`)
+  })
+}
